@@ -7,7 +7,7 @@ pip install pyinstaller
 cls
 echo Building executable...
 echo:
-pyinstaller --onefile main.py
+pyinstaller --onefile --add-data "icon/*.ico;icon" --icon=icon\\icon.ico main.py
 cls
 echo Moving file to root destination...
 echo:
