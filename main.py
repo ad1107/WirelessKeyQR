@@ -1,7 +1,8 @@
 import subprocess
 import tkinter as tk
 from tkinter import ttk, filedialog
-
+import sys
+import os
 import qrcode
 from PIL import ImageTk, Image
 from tkcolorpicker import askcolor  # Import the color picker
@@ -94,10 +95,18 @@ def change_background_color():
         generate_qr_code()
         background_color_label.config(text=background_color)
 
+def get_icon_path():
+    # Check if the script is bundled using PyInstaller
+    if getattr(sys, 'frozen', False):
+        return os.path.join(sys._MEIPASS, "icon", "icon.ico")
+    else:
+        return "icon/icon.ico"  # Relative path to the icon.ico file
 
 window = tk.Tk()
 window.title('Wi-Fi Profiles')
 window.geometry('800x600')
+icon_path = get_icon_path()
+window.iconbitmap(default=icon_path)
 
 data = subprocess.check_output('netsh wlan show profiles').decode('utf-8').split('\n')
 profiles = [i.split(":")[1][1:-1] for i in data if "All User Profile" in i]
