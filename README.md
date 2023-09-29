@@ -11,8 +11,3 @@ WirelessKeyQR allows for browsing saved netowrk credentials, with information li
 ## Using the source code.
 - You can run the code natively using python, or use the compiled `.exe` file in the `Releases` tab.
 - To build the source code, simply use pyinstaller module or use the automated `build.bat` file for easily creating version number.
-
-## Wishlist
-- Dark mode support
-- Custom app icon.
-- Custom network SSID and Password for generating QR Code.
